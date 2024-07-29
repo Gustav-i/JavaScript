@@ -1,19 +1,52 @@
-// Get Quotes From API
+const quoteContainer = document.getElementById("quote-container")
+const quoteText = document.getElementById("quote")
+const authorText = document.getElementById("author")
+const twitterBtn = document.getElementById("twitter")
+const newQuoteBtn = document.getElementById("new-quote")
+const loader = document.getElementById("loader")
 
-// function newQuote() 
-// {
-//     const quote = localQuotes[Math.floor(Math.random() * localQuotes.length)]
-//     console.log(quote)
-// }
-
-// newQuote()
 
 let apiQuotes = []
 
+function loading() 
+{
+  loader.hidden = false
+  quoteContainer.hidden = true
+}
+
+function complete() 
+{
+  quoteContainer.hidden = false
+  loader.hidden = true
+}
+
 function newQuote() 
 {
-    const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)]
-    console.log(quote)
+  loading()
+
+  const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)]
+
+  quoteText.textContent = quote.text
+
+  if (quote.text.length > 100) 
+  {
+    quoteText.classList.add("long-quote")
+  }
+  else 
+  {
+    quoteText.classList.remove("long-quote")
+  }
+
+  if (!quote.author) 
+  {
+    authorText.textContent = "Unknown"  
+  }
+  else 
+  {
+    authorText.textContent = quote.author
+  }
+
+  complete()
 }
 
 async function getQuotes() 
@@ -32,5 +65,13 @@ async function getQuotes()
   }
 }
 
-getQuotes()
+function tweetQuote() 
+{
+  const twitterURL = `https://twitter.com/intent/tweet?text=${quoteText.textContent} - ${author.textContent}`
+  window.open(twitterURL, '_blank')
+}
 
+newQuoteBtn.addEventListener('click', newQuote)
+twitterBtn.addEventListener('click', tweetQuote)
+
+getQuotes()
