@@ -8,13 +8,13 @@ const loader = document.getElementById("loader")
 
 let apiQuotes = []
 
-function loading() 
+function showLoadingSpinner() 
 {
   loader.hidden = false
   quoteContainer.hidden = true
 }
 
-function complete() 
+function removeLoadingSpinner() 
 {
   quoteContainer.hidden = false
   loader.hidden = true
@@ -22,7 +22,7 @@ function complete()
 
 function newQuote() 
 {
-  loading()
+  showLoadingSpinner()
 
   const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)]
 
@@ -46,7 +46,7 @@ function newQuote()
     authorText.textContent = quote.author
   }
 
-  complete()
+  removeLoadingSpinner()
 }
 
 async function getQuotes() 
