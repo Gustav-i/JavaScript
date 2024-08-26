@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NASA API Pictures</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="https://s2.googleusercontent.com/s2/favicons?domain=www.nasa.gov">
+</head>
+<body>
+  <!-- LOADER -->
+  <div class="loader hidden">
+    <img src="rocket.svg" alt="Rocket Loading Animation">
+  </div>
+  <!-- CONTAINER -->
+  <div class="container">
+    <div class="nav-container">
+      <span class="background"> </span>
+        <!-- RESULTS NAV -->
+        <span class="nav-items" id="results-nav">
+          <h3 class="clickable" onclick="updateDOM('favorites')"> Favorites </h3>
+          <h3>&nbsp;&nbsp;&nbsp;◽&nbsp;&nbsp;&nbsp;</h3>
+          <h3 class="clickable" onclick="getPictures()"> Load More </h3>
+        </span>
+        <!-- FAVORITES NAV -->
+        <span class="nav-items hidden" id="favorites-nav">
+          <h3 class="clickable" onclick="getPictures()"> Load More NASA Images </h3>
+        </span>
+    </div>
+    <!-- IMAGES CONTAINER -->
+    <div class="images-container">
+      
+      <!-- <div class="card">
+        <a href="" title="View Full Image" target="_blank">
+          <img class="card-img-top" src="https://apod.nasa.gov/apod/image/2408/EnceladusStripes_Cassini_3237.jpg" alt="NASA Picture of the day">
+        </a>
+        <div class="card-body">
+          <h5 class="card-title"> Title Image </h5>
+          <p class="clickable"> Add to Favorites </p>
+          <p class="card-text"> 
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi porro perferendis necessitatibus! Quaerat nulla, atque optio ipsa, itaque unde sunt sint numquam nesciunt perferendis veniam porro aliquam fugiat quasi hic? 
+          </p>
+          <small class="text-muted">
+            <strong> 12-12-2020 </strong>
+            <span> &copy; Copyright Info </span>
+          </small>
+        </div>
+      </div> -->
+    </div>
+
+  </div>
+  <!-- SAVE CONFIRMATION -->
+  <div class="save-confirmed" hidden>
+    <h1> ADDED! </h1>
+  </div>
+</body>
+  <script src="script.js"></script>
+</html>
