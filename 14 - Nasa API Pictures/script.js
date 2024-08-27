@@ -5,7 +5,7 @@ const saveConfirmed = document.querySelector('.save-confirmed')
 const loader = document.querySelector('.loader')
 
 // NASA API
-const count = 2
+const count = 5
 const API_KEY = "DEMO_KEY"
 const API_URL = `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&count=${count}`
 
@@ -13,7 +13,23 @@ let resultsArray = []
 let favorites = {}
 
 
-function showContent() { loader.classList.add("hidden") }
+function showContent(page) 
+{
+  window.scrollTo({ top: 0, behavior: "smooth" })
+
+  if (page === "results") 
+  {
+    resultsNav.classList.remove("hidden")
+    favoritesNav.classList.add("hidden")
+  }
+  else 
+  {
+    resultsNav.classList.add("hidden")
+    favoritesNav.classList.remove("hidden")
+  }
+
+  loader.classList.add("hidden") 
+}
 
 function createDOMNodes(page) 
 {
@@ -88,7 +104,7 @@ function updateDOM(page)
   
   imagesContainer.textContent = ""
   createDOMNodes(page)
-  showContent()
+  showContent(page)
 }
 
 // GET IMAGES
